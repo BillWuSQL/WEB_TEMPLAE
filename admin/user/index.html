@@ -1,0 +1,204 @@
+<div class="container-fluid">
+<!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                用户列表
+<!--                 <small>用户列表</small> -->
+            </h1>
+                <!--
+	            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-home"></i><a href="index.html">用户管理</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-file"></i>用户列表
+                </li>
+                &nbsp;
+	            </ol>
+                -->
+        </div>
+        
+    </div>
+    <!-- /.row -->
+    
+    <!-- 操作按钮  -->
+    <div class="row" >
+        <div class="col-lg-12 countsDiv">
+            <button type="button" class="btn btn-default" onclick="user.addSimpleFun()">添加</button>
+        </div>
+        <br>
+     </div>
+    
+    <!-- ================================================================================================================  -->
+    <!-- 以下是公共dom =============================================================================================== Start -->
+    <!-- 加载中gif动画 -->
+    <div id="loadingDiv" class="loading-div" >
+        <img src="../../image/loading.gif" />
+    </div>
+    
+    <div id="tushDiv">
+      <!-- 弹出tush窗 -->
+    </div>
+    <!-- 以下是公共dom =============================================================================================== End -->
+    <!-- ==============================================================================================================  -->
+    
+    
+    <div class="row">
+        <div class="col-lg-12">
+<!--                         <h2>Bordered with Striped Rows</h2> -->
+            <div class="table-responsive " id="pageTableDiv1">
+                <table class="table table-hover table-striped " >
+                    <thead>
+                        <tr>
+                            <th name="username">名称</th>
+<!--                             <th name="avatar" img="true" img-width="40" img-height="40" >头像</th> -->
+                            <th name="mobile">手机</th>
+                            <th name="office">分店</th>
+                            <th name="city">城市</th>
+                            <th name="create_time">添加时间</th>
+                            <th >操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>加载中 ... </td> 
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="pageCountDiv" id="pageCountDiv" >
+        </div>
+    </div>
+    
+</div>
+
+<!-- 添加/修改用户窗口 ================================================================================================  Start  -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="addModalTitle">添加员工</h4>
+            </div>
+            <div class="modal-body" id="">
+                <form id="addForm" name="addForm">
+                    <div class="" >
+                        <input name="id" id="id" type="hidden" />
+                        <div class="form-group">
+                            <label>名称</label>
+                            <input name="username" id="username" class="form-control" placeholder="名称" mustneed="true">
+                        </div>
+                        <div class="form-group">
+                            <label>手机</label>
+                            <input name="mobile" id="mobile" class="form-control" placeholder="手机" validate="mobile" >
+                        </div>
+                        <div class="form-group">
+                            <label>分店</label>
+                            <input name="office" id="office" class="form-control" placeholder="分店" >
+                        </div>
+                        <div class="form-group">
+                            <label>城市</label>
+                            <select name="city" id="city" class="form-control">
+                                <option value="广州">广州</option>
+                                <option value="深圳">深圳</option>
+                            </select>
+                        </div>
+                     </div>
+                 </form>
+            </div>
+            <div class="modal-footer"> 
+                <button type="button" class="btn btn-default" data-dismiss="modal" >关闭</button>
+                <button type="button" class="btn btn-primary" id="addModalOkBtn" >确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- 添加/修改用户窗口 ================================================================================================    End  -->
+
+<!-- 自定义script -->
+<script>
+//common varaibles
+var requestPojo = {'hid':1,'rid':1, p:1};   //p:1第一页
+requestPojo = util.initRequestObj(requestPojo);
+common.requestPojo = requestPojo;
+
+var user = {};
+user.pageTableDivId = "pageTableDiv1"; //pageTableDivId就是 此table 所有的div 的id
+//api varariables
+user.urlList = config.user.userList;  //公寓用户列表api
+user.urlDel = config.user.userDel;  //删除用户api
+user.urlAdd = config.user.userAdd;  //添加用户api
+user.urlModi = config.user.userModi;  //修改用户api
+
+user.lastColumnHtmlList = [
+                            {
+                                 class:"btn-default", title:"修改", method:"user.modiSimpleFun",
+                            },
+                            {
+                                 class:"btn-default", title:"删除", method:"user.delSimpleFun",
+                            },
+                           ]; //操作按钮;
+
+//fill table list
+common.page.fillTableListAjax(user.urlList, requestPojo, user.pageTableDivId, user.lastColumnHtmlList);
+
+//删除公寓员工
+user.delSimpleFun = function(i, title) {
+	var pojo = common.list[i]; 
+    pojo = util.initRequestObj(pojo);
+    common.btn.confirmAjax(title, user.urlDel, pojo, false, true);
+}
+
+//员工添加 =========================================================================== Start
+//添加公寓员工 初始页
+user.addSimpleFun = function() {
+	$("#addModalTitle").html("添加员工");
+	util.angu4empty("addForm");  //reflush 所有字段
+	
+    $('#addModal').modal();
+    $("#addModalOkBtn").one("click",user.addSimpleGoFun);
+}
+//添加公寓员工成功后
+user.addSimpleGoSuccFun = function() {
+    $('#addModal').modal("hide");
+    common.btn.alert(1, "添加员工成功");
+}
+//添加公寓员工 api方法
+user.addSimpleGoFun = function() {
+	var pojo = util.angu("addForm", true);
+    if (!pojo) { return; }
+    common.page.updateAjax(user.urlAdd, pojo, user.addSimpleGoSuccFun, false, true); 
+}
+//员工添加 ===========================================================================   End
+
+//员工修改 =========================================================================== Start
+//修改公寓员工 初始页
+user.modiSimpleFun = function(i) {
+	$("#addModalTitle").html("修改员工");
+	var pojo = common.list[i]; 
+    util.angu4html(pojo, "addForm");
+    
+    $('#addModal').modal();
+    $("#addModalOkBtn").one("click", user.modiSimpleGoFun);
+}
+//添加公寓员工成功后
+user.modiSimpleGoSuccFun = function() {
+    $('#addModal').modal("hide");
+    common.btn.alert(1, "修改员工成功");
+}
+//添加公寓员工 api方法
+user.modiSimpleGoFun = function() {
+    var pojo = util.angu("addForm", true);
+    if (!pojo) { return; }
+    common.page.updateAjax(user.urlModi, pojo, user.modiSimpleGoSuccFun, false, true); 
+}
+//员工修改 ===========================================================================   End
+
+
+
+</script>

@@ -1,0 +1,468 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑"
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden
+}
+
+body {
+    overflow-x: auto
+}
+
+.fl-l {
+    float: left
+}
+
+.fl-r {
+    float: right
+}
+
+.fl-clear {
+    clear: both
+}
+
+i.icon {
+    display: inline-block;
+    float: left
+}
+
+.header {
+    height: 80px;
+    width: 100%;
+    min-width: 1300px;
+    background: #1b8cf2
+}
+
+.menu-content {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    min-width: 1300px;
+    overflow: hidden
+}
+
+.menu {
+    position: absolute;
+    left: 0;
+    width: 190px;
+    height: 100%;
+    overflow: hidden;
+    background: #424f57;
+    padding-top: 50px;
+    color: #FFF
+}
+
+.content {
+    height: 100%;
+    min-width: 1110px;
+    margin-left: 190px;
+    overflow-y: auto;
+    background: #e4e9ef
+}
+
+.logo {
+    height: 60px;
+    width: 60px;
+    margin: 10px 40px;
+    border-radius: 30px;
+    cursor: pointer
+}
+
+.logo img {
+    border-radius: 30px
+}
+
+.slogen {
+    margin-top: 30px;
+    height: 20px;
+    line-height: 20px;
+    color: #FFF
+}
+
+.slogen span {
+    margin-right: 10px;
+    font-size: 18px
+}
+
+.slogen .city {
+    font-size: 12px;
+    margin-left: 10px
+}
+
+.userInfo {
+    padding-right: 10px;
+    font-size: 12px;
+    color: #a8cbf9;
+    margin-top: 30px;
+    height: 20px;
+    line-height: 20px
+}
+
+.userInfo > span {
+    margin-right: 10px
+}
+
+.userInfo span i {
+    width: 14px;
+    height: 13px;
+    margin-top: 4px;
+    margin-right: 10px;
+    background: url(http://img.58cdn.com.cn/ui8/house/apartment_sys/images/mofang_icon.png);
+    background-position: 0 0
+}
+
+.btn {
+    text-decoration: none;
+    color: #FFF;
+    cursor: pointer;
+    margin: 0 10px
+}
+
+.menu-list li {
+    line-height: 40px;
+    list-style-type: none;
+    font-size: 14px
+}
+
+.menu-list li i {
+    width: 14px;
+    height: 13px;
+    margin-top: 13px;
+    margin-right: 10px;
+    margin-left: 30px
+}
+
+.menu-list li i.icon-up {
+    width: 8px;
+    height: 5px;
+    margin-top: 18px;
+    margin-right: 30px;
+    background: url(http://img.58cdn.com.cn/ui8/house/apartment_sys/images/mofang_icon.png);
+    background-position: -19px 0
+}
+
+.menu-list li.cur {
+    background: #38444c;
+    border-left: 2px solid #1b8cf2
+}
+
+.menu-list li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: #FFF
+}
+
+.menu-list-sec li a {
+    font-size: 12px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: #a2abb1;
+    padding-left: 55px
+}
+
+.menu-list-sec li a:hover {
+    background: #38444c;
+    border-left: 2px solid #1b8cf2;
+    padding-left: 53px
+}
+
+.menu-list-sec li.cur a {
+    background: #38444c;
+    border-left: 2px solid #1b8cf2;
+    padding-left: 53px
+}
+
+.menu-house i {
+    background: url(http://img.58cdn.com.cn/ui8/house/apartment_sys/images/mofang_icon.png?201600908);
+    background-position: -118px 0
+}
+
+.menu-employee i {
+    background: url(http://img.58cdn.com.cn/ui8/house/apartment_sys/images/mofang_icon.png);
+    background-position: -16px -15px
+}
+
+.menu-custom i {
+    background: url(http://img.58cdn.com.cn/ui8/house/apartment_sys/images/mofang_icon.png);
+    background-position: -32px -15px
+}
+
+.menu-finance i {
+    background: url(http://img.58cdn.com.cn/ui8/house/apartment_sys/images/mofang_icon.png);
+    background-position: -49px -15px
+}
+
+.menu-home i {
+    background: url(http://img.58cdn.com.cn/ui8/house/apartment_sys/images/mofang_icon.png?20160908);
+    background-position: 0 -15px
+}
+
+.menu-tongji i {
+    background: url(http://img.58cdn.com.cn/ui8/house/apartment_sys/images/mofang_icon.png?20160908);
+    background-position: -104px -28px
+}
+
+.modal-bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: rgba(0, 0, 0, .7)
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1000;
+    background: #FFF;
+    border-radius: 5px
+}
+
+.modal-header {
+    height: 40px;
+    background: #d6e1ee;
+    border-radius: 5px 5px 0 0;
+    line-height: 40px;
+    font-size: 14px;
+    color: #748194;
+    padding-left: 20px
+}
+
+.modal-close {
+    margin-right: 10px;
+    font-size: 25px;
+    line-height: 40px;
+    cursor: pointer
+}
+
+.modal-content {
+    padding: 10px;
+    color: #3b4a5e;
+    overflow: hidden;
+    position: relative
+}
+
+.modal-btn {
+    text-align: center
+}
+
+.modal-btn .btn {
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+    text-align: center;
+    border: 1px solid #1b8cf2;
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 0 42px
+}
+
+.btn-OK {
+    background: #1b8cf2;
+    color: #FFF
+}
+
+.btn-Cancel {
+    background: #FFF;
+    color: #1b8cf2
+}
+
+.modal .row-title {
+    font-size: 14px
+}
+
+.modal-row input {
+    width: 150px;
+    height: 25px;
+    padding-left: 10px;
+    border: 1px solid #a4b2c6;
+    border-radius: 4px;
+    font-size: 12px
+}
+
+.modal-row input.must {
+    border: 1px solid #fe772b
+}
+
+.err-tip {
+    display: none;
+    font-size: 12px;
+    color: #fe772b;
+    padding-left: 10px
+}
+
+.modal-status {
+    width: 155px;
+    height: 20px;
+    margin-top: -30px;
+    margin-left: -80px;
+    padding: 20px 0;
+    font-size: 18px;
+    line-height: 20px
+}
+
+.modal-status .icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 20px;
+    margin-right: 10px
+}
+
+.modal-status .icon-success {
+    background: url(http://img.58cdn.com.cn/ui8/house/apartment_sys/images/mofang_icon.png);
+    background-position: -66px 0
+}
+
+.modal-status .icon-fail {
+    background: url("http://img.58cdn.com.cn/ui8/house/apartment_sys/images/mofang_icon.png");
+    background-position: -66px -40px
+}
+
+.login-bg {
+    width: 100%;
+    height: 100%;
+    background: url("http://static.boluoroom.com/gongyu/login_bg.jpg") no-repeat center; /*chg Bill */
+/*     background: url("http://img.58cdn.com.cn/ui8/house/apartment_sys/images/mofang_login_bg.jpg") no-repeat center; */
+    background-size: 1920px 940px
+}
+
+.login-cont {
+    position: absolute;
+    width: 530px;
+    height: 340px;
+    right: 10%;
+    top: 50%;
+    margin-top: -210px;
+    background: #FFF;
+    border-radius: 5px;
+    padding-top: 40px;
+    color: #54616a;
+}
+
+.login-title {
+    font-size: 28px;
+/*     font-weight: 700; */
+    text-align: center;
+    margin-bottom: 30px
+}
+
+.login-row {
+    padding: 5px 50px;
+    font-size: 14px
+}
+/*bill */
+.login-row-btn {
+    padding: 5px 50px;
+    margin-top: -20px;
+    font-size: 14px
+}
+
+.login-row input {
+    width: 98%;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #e9edf3;
+    background: #f9f9f9;
+    border-radius: 5px;
+    padding-left: 5px;
+    color: #949fae
+}
+
+.err-row {
+    margin-top: 5px;
+    width: 100%;
+    height: 20px;
+    text-align: center
+}
+
+.login-cont .err-tip {
+    display: none;
+    color: #fe6a04;
+    font-size: 12px;
+    text-align: center;
+}
+
+.login-cont .btn {
+    width: 98%;
+    height: 40px;
+    line-height: 40px;
+    background: #1b8cf2;
+    color: #FFF;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 20px auto
+}
+
+.modal-logo {
+    width: 480px;
+    height: 340px;
+    margin-top: -240px;
+    margin-left: -170px;
+    font-size: 18px
+}
+
+.modal-logo .btn {
+    background: #1b8cf2;
+    color: #FFF;
+    width: 120px;
+    margin: 0 50px
+}
+
+.logo-img {
+    width: 127px;
+    height: 127px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-radius: 64px
+}
+
+.logo-img img {
+    border-radius: 64px
+}
+
+.logo-delete {
+    display: none;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 37px;
+    left: 273px;
+    background: url(http://img.58cdn.com.cn/ui8/house/apartment_sys/images/mofang_icon.png);
+    background-position: -89px 0;
+    cursor: pointer
+}
+
+.logo-tip {
+    text-align: center;
+    font-size: 14px;
+    color: #7f8b9c;
+    margin-top: 20px
+}
+
+.logo-tip span {
+    color: #fe6a04
+}
+
+#form_logo {
+    display: none
+}

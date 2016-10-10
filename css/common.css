@@ -1,0 +1,46 @@
+/* Add bill 20160927 */
+
+/* 个别的列表 字段 较少，可以用这个 让它内容不换行 no use*/
+table .nowarp {
+	white-space:nowrap;
+}
+
+.loading-div {
+/* 	display:none; */
+	width:100%;
+	position:relative;
+	margin: 0 auto;
+/* 	text-align:center; */
+}
+.loading-div img {
+/* 	width:80px; */
+	position:relative;
+	margin: 0 auto;
+	width:45px;
+}
+
+/*统计列div */
+.countsDiv {
+    margin: -10px auto 5px auto;
+}
+/*分页 */
+.pageCountDiv {
+	position:relative;
+	float:right;
+	margin: 0 1%;
+}
+/*列表页div */
+.page-list-div {
+	display:none;
+}
+
+/*输入框错误提示 span 样式*/
+.input-error-span {
+	color:red;
+}
+/*登录界面 tush提示 span 样式*/
+.tushDiv-login {
+	color:red;
+	position:relative;
+    margin: -6px 50px;
+}
